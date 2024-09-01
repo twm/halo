@@ -1,13 +1,5 @@
 <script>
-    let artWidth = 8.5
-    let artHeight = 11
-    let frameWidth = 1.5
-    let rabbetWidth = 1 / 4
-    let kerf = 1 / 16
-    let stockLength = 0;
-    $: {
-        stockLength = 2 * artWidth + 2 * artHeight + 3 * kerf
-    }
+    import { artX, artY, frameWidth, stockLength } from "$lib/stores"
 </script>
 
 <h1>Picture Frame Calculator</h1>
@@ -15,22 +7,17 @@
 <form action="#">
     <label>
         Art width
-        <input type="number" bind:value={artWidth} />
+        <input type="number" bind:value={$artX} min="1" />
     </label>
     <label>
         Art height
-        <input type="number" bind:value={artHeight} />
+        <input type="number" bind:value={$artY} min="1" />
     </label>
 
     <label>
         Frame width
-        <input type="number" bind:value={frameWidth} />
-    </label>
-
-    <label>
-        Rabbet width
-        <input type="number" bind:value={rabbetWidth} />
+        <input type="number" bind:value={$frameWidth} min="0.25" />
     </label>
 </form>
 
-<p>Stock length required: {stockLength.toFixed(2)}</p>
+<p>Stock length required: {$stockLength.toFixed(2)}</p>
