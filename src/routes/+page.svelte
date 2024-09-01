@@ -1,5 +1,6 @@
 <script>
     import { artX, artY, frameWidth, stockLength } from "$lib/stores"
+    import Frame from "$lib/Frame.svelte"
 </script>
 
 <h1>Picture Frame Calculator</h1>
@@ -21,3 +22,5 @@
 </form>
 
 <p>Stock length required: {$stockLength.toFixed(2)}</p>
+
+<Frame />
