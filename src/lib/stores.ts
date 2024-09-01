@@ -41,3 +41,58 @@ export const stockLength = derived(
         return 2 * $frameX + 2 * $frameY + 3 * $kerfWidth
     }
 )
+
+export type Material = {
+    name: string
+    color: string
+}
+
+export const MATERIALS: Material[] = [
+    { name: "Walnut", color: "#4b2606" },
+    { name: "Maple", color: "beige" },
+    { name: "Black", color: "black" },
+]
+
+export const material = writable<Material>(MATERIALS[0])
+
+export type Part = {
+    count: number
+    width: number
+    length: number
+    material: Material
+}
+
+export const parts = derived(
+    [frameX, frameY, frameWidth, material],
+    ([$frameX, $frameY, $frameWidth, $material]) => {
+        let parts: Part[]
+
+        if ($frameX === $frameY) {
+            parts = [
+                {
+                    count: 4,
+                    width: $frameWidth,
+                    length: $frameY,
+                    material: $material,
+                },
+            ]
+        } else {
+            parts = [
+                {
+                    count: 2,
+                    width: $frameWidth,
+                    length: $frameY,
+                    material: $material,
+                },
+                {
+                    count: 2,
+                    width: $frameWidth,
+                    length: $frameX,
+                    material: $material,
+                },
+            ]
+        }
+
+        return parts
+    }
+)
