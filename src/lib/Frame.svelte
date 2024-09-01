@@ -1,11 +1,32 @@
 <script>
-    import { artX, artY, frameX, frameY, frameWidth, rabbetWidth } from "$lib/stores"
+    import {
+        artX,
+        artY,
+        frameX,
+        frameY,
+        frameWidth,
+        rabbetWidth,
+        material,
+    } from "$lib/stores"
 
-    let frameInnerX = $frameX - 2 * $frameWidth;
-    let frameInnerY = $frameY - 2 * $frameWidth;
+    /**
+     * (0, 0)          (l, 0)
+     *    +--->--->--->--+
+     *     \            /
+     *      \          /
+     *       \        /
+     *        +--<---+
+     *     (w, w)   (l - w, w)
+     */
+    function trap(l, w) {
+        return `M 0 0 L${l} 0 L ${l - w} ${w} L ${w} ${w} Z`
+    }
+
+    let frameInnerX = $frameX - 2 * $frameWidth
+    let frameInnerY = $frameY - 2 * $frameWidth
 </script>
 
-<svg viewBox={`0 0 ${$frameX} ${$frameY}`}>
+<svg viewBox={`0 0 ${$frameX} ${$frameY}`} width={$frameX} height={$frameY}>
     <!-- the art -->
     <rect
         x={$frameWidth - $rabbetWidth}
@@ -15,39 +36,31 @@
         fill="#eee"
     />
     <!-- the frame -->
+    <path id="top" d={trap($frameX, $frameWidth)} fill={$material.color} />
     <path
-        d={`M 0 0
-        l ${$frameX} 0
-        l 0 ${$frameY}
-        l ${-$frameX} 0
-        Z
-
-        M ${$frameWidth} ${$frameWidth}
-        l ${frameInnerX} 0
-        l 0 ${frameInnerY}
-        l ${-frameInnerX} 0
-        Z
-        `}
-        fill="none"
-        stroke="black"
-        stroke-width="0.01px"
+        id="right"
+        d={trap($frameY, $frameWidth)}
+        fill={$material.color}
+        transform={`translate(${$frameX} 0) rotate(90)`}
     />
-    <!-- the miter cuts -->
     <path
-        d={`M 0 0
-        l ${$frameWidth} ${$frameWidth}
-
-        M ${$frameX} 0
-        l ${-$frameWidth} ${$frameWidth}
-
-        M ${$frameX} ${$frameY}
-        l ${-$frameWidth} ${-$frameWidth}
-
-        M 0 ${$frameY}
-        l ${$frameWidth} ${-$frameWidth}
-        `}
-        fill="none"
-        stroke="red"
-        stroke-width="0.01px"
+        id="bottom"
+        d={trap($frameX, $frameWidth)}
+        fill={$material.color}
+        transform={`translate(${$frameX} ${$frameY}) rotate(180)`}
+    />
+    <path
+        id="left"
+        d={trap($frameY, $frameWidth)}
+        fill={$material.color}
+        transform={`translate(0 ${$frameY}) rotate(270)`}
     />
 </svg>
+
+<style>
+    svg {
+        width: 100%;
+        height: auto;
+        max-height: 100vh;
+    }
+</style>
