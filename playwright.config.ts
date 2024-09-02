@@ -7,7 +7,7 @@ const config: PlaywrightTestConfig = {
     },
     testDir: "tests",
     testMatch: /(.+\.)?(test|spec)\.[jt]s/,
-    reporter: "html",
+    reporter: [["html"], [process.env.CI ? "github" : "dot"]],
 }
 
 export default config
