@@ -1,3 +1,11 @@
+<script>
+    import normalizeCss from "$lib/vendor/normalize.css/normalize-8.0.1.css?url"
+</script>
+
+<svelte:head>
+    <link rel="stylesheet" type="text/css" href={normalizeCss} />
+</svelte:head>
+
 <h1>Picture Frame Calculator</h1>
 
 <slot></slot>
@@ -27,8 +35,6 @@
             400 1rem / 1.2 "Zilla Slab",
             "URW Bookman",
             serif;
-    }
-    :global(button, input, select, option) {
-        font: inherit;
+        padding: 0 0.5rem; /* TODO: extract layout as a component.*/
     }
 </style>
