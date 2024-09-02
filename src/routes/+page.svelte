@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {
         artX,
         artY,
@@ -10,6 +10,8 @@
     import Frame from "$lib/Frame.svelte"
     import PartList from "$lib/PartList.svelte"
     import TextureDefs from "$lib/textures/TextureDefs.svelte"
+
+    import { frac } from "$lib/frac"
 </script>
 
 <TextureDefs />
@@ -50,8 +52,9 @@
         </form>
 
         <div class="results">
-            <h2>Output</h2>
-            <p>Stock required: {$stockLength}</p>
+            <h2>Materials</h2>
+
+            <p>Stock required: {frac($stockLength)}"</p>
 
             <PartList />
         </div>

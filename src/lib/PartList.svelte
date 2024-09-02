@@ -1,8 +1,9 @@
 <script lang="ts">
     import type { Part } from "$lib/stores"
+    import { frac } from "$lib/frac"
     import { parts } from "$lib/stores"
 
-    function* gapped(parts: Part[], gap: number) {
+    function* gapped(parts: Part[], gap: number): IterableIterator<[number, Part]> {
         let y = 0
         for (const part of parts) {
             for (let i = 0; i < part.count; i++) {
@@ -25,7 +26,7 @@
 <svg
     width={totalWidth}
     height={totalHeight}
-    viewbox={`0 0 ${totalWidth} ${totalHeight}`}
+    viewBox={`0 0 ${totalWidth} ${totalHeight}`}
     preserveAspectRatio="xMinYMid meet"
 >
     {#each gapped($parts, gap) as [y, part]}
@@ -51,7 +52,7 @@
         {#each $parts as part}
             <tr>
                 <td>{part.count}</td>
-                <td>{part.width} × {part.length}</td>
+                <td>{frac(part.width)} × {frac(part.length)}</td>
                 <td>{part.material.name}</td>
             </tr>
         {/each}

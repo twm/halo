@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import {
         artX,
         artY,
@@ -18,12 +18,9 @@
      *        +--<---+
      *     (w, w)   (l - w, w)
      */
-    function trap(l, w) {
+    function trap(l: number, w: number): string {
         return `M 0 0 L${l} 0 L ${l - w} ${w} L ${w} ${w} Z`
     }
-
-    let frameInnerX = $frameX - 2 * $frameWidth
-    let frameInnerY = $frameY - 2 * $frameWidth
 </script>
 
 <svg viewBox={`0 0 ${$frameX} ${$frameY}`} width={$frameX} height={$frameY}>
