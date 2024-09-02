@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
@@ -41,6 +43,9 @@ jobs:
     needs: [Fast]
     steps:
       - uses: actions/checkout@v4
+        with:
+          lfs: true
+          persist-credentials: false
 
       - uses: actions/setup-node@v4
         with:
