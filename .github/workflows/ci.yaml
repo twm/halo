@@ -29,6 +29,8 @@ jobs:
 
       - run: npm run test:unit
 
+      - run: npx playwright install --with-deps
+
       - run: npm run test:integration
 
       - run: npm run build
