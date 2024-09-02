@@ -2,9 +2,15 @@
 
 A picture frame stock and cutlist calculator.
 
+## Checkout
+
+Clone this repository as usual.
+
+Install [Git LFS](https://git-lfs.com/) and run `git lfs init`.
+
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install`, start a development server:
+Once you've installed dependencies with `npm install`, start a development server:
 
 ```bash
 npm run dev
@@ -23,4 +29,22 @@ npm run build
 
 You can preview the production build with `npm run preview`.
 
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+## Testing
+
+Run the unit tests with:
+
+```bash
+npm run test:unit
+```
+
+The integration tests use Playwright and can be run with:
+
+```bash
+npm run test:integration
+```
+
+To update screenshots, run:
+
+```bash
+npx playwright test -u
+```
