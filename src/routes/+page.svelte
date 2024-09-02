@@ -21,16 +21,22 @@
         <form action="#" method="GET">
             <label>
                 Art width
-                <input type="number" bind:value={$artX} min="1" />
+                <input type="number" bind:value={$artX} min="1" step="0.25" required />
             </label>
             <label>
                 Art height
-                <input type="number" bind:value={$artY} min="1" />
+                <input type="number" bind:value={$artY} min="1" step="0.25" required />
             </label>
 
             <label>
                 Frame width
-                <input type="number" bind:value={$frameWidth} min="0.25" />
+                <input
+                    type="number"
+                    bind:value={$frameWidth}
+                    min="0.25"
+                    step="0.125"
+                    required
+                />
             </label>
 
             <label>
