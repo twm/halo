@@ -36,23 +36,23 @@
         fill="#eee"
     />
     <!-- the frame -->
-    <path id="top" d={trap($frameX, $frameWidth)} fill={$material.color} />
+    <path id="top" d={trap($frameX, $frameWidth)} fill={$material.fill} />
     <path
         id="right"
         d={trap($frameY, $frameWidth)}
-        fill={$material.color}
+        fill={$material.fill}
         transform={`translate(${$frameX} 0) rotate(90)`}
     />
     <path
         id="bottom"
         d={trap($frameX, $frameWidth)}
-        fill={$material.color}
+        fill={$material.fill}
         transform={`translate(${$frameX} ${$frameY}) rotate(180)`}
     />
     <path
         id="left"
         d={trap($frameY, $frameWidth)}
-        fill={$material.color}
+        fill={$material.fill}
         transform={`translate(0 ${$frameY}) rotate(270)`}
     />
 </svg>

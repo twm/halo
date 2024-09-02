@@ -44,13 +44,15 @@ export const stockLength = derived(
 
 export type Material = {
     name: string
-    color: string
+    fill: string
 }
 
 export const MATERIALS: Material[] = [
-    { name: "Walnut", color: "#4b2606" },
-    { name: "Maple", color: "beige" },
-    { name: "Black", color: "black" },
+    { name: "Red oak, rift", fill: "url(#red-oak1)" },
+    { name: "Red oak, flat", fill: "url(#red-oak2)" },
+    { name: "Walnut", fill: "url(#raw-walnut)" }, // TODO: Better walnut image
+    //{ name: "Maple", fill: "beige" }, // TODO: Maple image
+    { name: "Black", fill: "black" },
 ]
 
 export const material = writable<Material>(MATERIALS[0])

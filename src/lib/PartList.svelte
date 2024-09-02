@@ -34,7 +34,7 @@
             {y}
             height={part.width}
             width={part.length}
-            fill={part.material.color}
+            fill={part.material.fill}
         />
     {/each}
 </svg>

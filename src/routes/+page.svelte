@@ -9,7 +9,10 @@
     } from "$lib/stores"
     import Frame from "$lib/Frame.svelte"
     import PartList from "$lib/PartList.svelte"
+    import TextureDefs from "$lib/textures/TextureDefs.svelte"
 </script>
+
+<TextureDefs />
 
 <div class="layout">
     <Frame />
