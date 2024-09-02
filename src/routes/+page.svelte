@@ -14,6 +14,10 @@
     import { frac } from "$lib/frac"
 </script>
 
+<svelte:head>
+    <title>Picture Frame Calculator</title>
+</svelte:head>
+
 <TextureDefs />
 
 <div class="layout">
