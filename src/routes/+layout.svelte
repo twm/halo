@@ -28,4 +28,7 @@
             "URW Bookman",
             serif;
     }
+    :global(button, input, select, option) {
+        font: inherit;
+    }
 </style>
