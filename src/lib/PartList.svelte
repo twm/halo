@@ -52,7 +52,7 @@
         {#each $parts as part}
             <tr>
                 <td>{part.count}</td>
-                <td>{frac(part.width)} × {frac(part.length)}</td>
+                <td>{frac(part.width)}" × {frac(part.length)}"</td>
                 <td>{part.material.name}</td>
             </tr>
         {/each}

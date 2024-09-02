@@ -19,7 +19,6 @@
 <div class="layout">
     <Frame />
     <div class="right">
-        <h1>Picture Frame Calculator</h1>
         <form action="#" method="GET">
             <label>
                 Art width
