@@ -1,19 +1,9 @@
 <script lang="ts">
-    import {
-        artX,
-        artY,
-        frameWidth,
-        stockLength,
-        material,
-        MATERIALS,
-    } from "$lib/stores"
     import Layout from "$lib/Layout.svelte"
     import Frame from "$lib/Frame.svelte"
     import Form from "$lib/Form.svelte"
     import PartList from "$lib/PartList.svelte"
     import TextureDefs from "$lib/textures/TextureDefs.svelte"
-
-    import { frac } from "$lib/frac"
 </script>
 
 <svelte:head>
