@@ -6,14 +6,7 @@
     <link rel="stylesheet" type="text/css" href={normalizeCss} />
 </svelte:head>
 
-<h1>Picture Frame Calculator</h1>
-
 <slot></slot>
-
-<p>
-    © 2024 Tom Most ☙
-    <a href="https://github.com/twm/halo/issues">Report an issue</a>
-</p>
 
 <style>
     @font-face {
@@ -35,6 +28,5 @@
             400 1rem / 1.2 "Zilla Slab",
             "URW Bookman",
             serif;
-        padding: 0 0.5rem; /* TODO: extract layout as a component.*/
     }
 </style>

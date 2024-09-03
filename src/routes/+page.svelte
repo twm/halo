@@ -7,7 +7,9 @@
         material,
         MATERIALS,
     } from "$lib/stores"
+    import Layout from "$lib/Layout.svelte"
     import Frame from "$lib/Frame.svelte"
+    import Form from "$lib/Form.svelte"
     import PartList from "$lib/PartList.svelte"
     import TextureDefs from "$lib/textures/TextureDefs.svelte"
 
@@ -15,68 +17,58 @@
 </script>
 
 <svelte:head>
-    <title>Picture Frame Calculator</title>
+    <title>Picture Frame Cutlist Calculator</title>
 </svelte:head>
 
 <TextureDefs />
 
-<div class="layout">
-    <Frame />
-    <div class="right">
-        <form action="#" method="GET">
-            <label>
-                Art width
-                <input type="number" bind:value={$artX} min="1" step="0.25" required />
-            </label>
-            <label>
-                Art height
-                <input type="number" bind:value={$artY} min="1" step="0.25" required />
-            </label>
-
-            <label>
-                Frame width
-                <input
-                    type="number"
-                    bind:value={$frameWidth}
-                    min="0.25"
-                    step="0.125"
-                    required
-                />
-            </label>
-
-            <label>
-                Material
-                <select bind:value={$material}>
-                    {#each MATERIALS as material}
-                        <option value={material}>{material.name}</option>
-                    {/each}
-                </select>
-            </label>
-        </form>
-
-        <div class="results">
-            <h2>Materials</h2>
-
-            <p>Stock required: {frac($stockLength)}"</p>
-
-            <PartList />
-        </div>
+<Layout>
+    <div class="container">
+        <main>
+            <div class="form">
+                <Form />
+            </div>
+            <div class="frame">
+                <Frame />
+            </div>
+            <div class="parts">
+                <PartList />
+            </div>
+        </main>
     </div>
-</div>
+</Layout>
 
 <style>
-    .layout {
+    .container {
+        container-type: inline-size;
+    }
+    main {
         display: grid;
-        grid-template-columns: 1fr 20rem;
-        gap: 1rem;
+        column-gap: 1rem;
+        grid-template-areas: "form frame parts";
+        grid-template-columns: 20rem 1fr 20rem;
+    }
+    @container (width < 50rem) and (width >= 40rem) {
+        main {
+            grid-template-areas: "form frame" "parts frame";
+            grid-template-columns: 20rem 1fr;
+        }
+    }
+    @container (width < 40rem) {
+        main {
+            grid-template-areas: "form" "frame" "parts";
+            grid-template-columns: 1fr;
+            grid-template-rows: min-content 70vh min-content;
+        }
     }
 
-    form {
-        display: grid;
-        grid-template-columns: 1fr 8rem;
-        gap: 0.5rem;
+    .form {
+        grid-area: form;
     }
-    label {
-        display: contents;
+    .frame {
+        grid-area: frame;
+    }
+    .parts {
+        grid-area: parts;
     }
 </style>
