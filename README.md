@@ -48,3 +48,9 @@ To update screenshots, run:
 ```bash
 npx playwright test -u
 ```
+
+If the screenshots taken in CI don't match you can download the report by running:
+
+```bash
+just pr-playwright-report
+```
