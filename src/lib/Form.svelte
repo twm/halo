@@ -60,4 +60,13 @@
     .label {
         display: contents;
     }
+
+    input,
+    select {
+        background: inherit;
+        color: inherit;
+        border: 1px solid currentColor;
+        padding: 1px 4px;
+        line-height: 1;
+    }
 </style>
