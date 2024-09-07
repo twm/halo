@@ -4,6 +4,7 @@
         artY,
         frameWidth,
         stockLength,
+        rabbetWidth,
         material,
         MATERIALS,
     } from "$lib/stores"
@@ -30,6 +31,16 @@
             min="0.25"
             step="0.125"
             required
+        />
+    </label>
+    <label>
+        Rabbet width
+        <input
+            type="number"
+            bind:value={$rabbetWidth}
+            min="0.125"
+            step="0.125"
+            max={$frameWidth - 1 / 4}
         />
     </label>
 
