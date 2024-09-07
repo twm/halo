@@ -13,6 +13,7 @@
         MATERIALS,
     } from "$lib/stores"
     import { frac } from "$lib/frac"
+    import FracRange from "$lib/FracRange.svelte"
 </script>
 
 <h2>Inputs</h2>
@@ -27,10 +28,11 @@
         <input type="number" bind:value={$artY} min="1" step="0.25" required />
     </label>
 
-    <label>
+    <label for="frame-width">
         Frame width
-        <input
-            type="number"
+
+        <FracRange
+            id="frame-width"
             bind:value={$frameWidth}
             max={$frameWidthMax}
             min={$frameWidthMin}
@@ -38,14 +40,15 @@
             required
         />
     </label>
-    <label>
+    <label for="rabbet-width">
         Rabbet width
-        <input
-            type="number"
+        <FracRange
+            id="rabbet-width"
             bind:value={$rabbetWidth}
             max={$rabbetWidthMax}
             min={$rabbetWidthMin}
             step="0.125"
+            required
         />
     </label>
 
@@ -69,7 +72,7 @@
     form,
     .outputs {
         display: grid;
-        grid-template-columns: 1fr 8rem;
+        grid-template-columns: 1fr 12rem;
         gap: 0.5rem;
     }
     label,
@@ -79,9 +82,12 @@
 
     input,
     select {
+        box-sizing: border-box;
+        width: 100%;
         background: inherit;
         color: inherit;
-        border: 1px solid currentColor;
+        border: none;
+        border-bottom: 1px solid currentColor;
         padding: 1px 4px;
         line-height: 1;
     }

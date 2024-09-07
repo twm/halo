@@ -22,6 +22,8 @@ export const artPadding = readable(1 / 16)
  * Width of the frame material.
  */
 export const frameWidth = writable(1 + 1 / 2)
+export const frameWidthMax = readable(4)
+export const frameWidthMin = readable(1 / 2)
 
 /**
  * Size of the rabbet on the interior of the frame.
@@ -59,12 +61,6 @@ export const frameY = derived(
     ([$artY, $artPadding, $frameWidth, $rabbetWidth]) => {
         return $artY + $artPadding - $rabbetWidth * 2 + $frameWidth * 2
     }
-)
-
-export const frameWidthMax = readable(4.0)
-export const frameWidthMin = derived(
-    [rabbetWidth],
-    ([$rabbetWidth]) => $rabbetWidth + 1 / 4
 )
 
 /**
