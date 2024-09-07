@@ -1,9 +1,38 @@
-import { writable, derived } from "svelte/store"
+import { readable, writable, derived } from "svelte/store"
 
-export const artX = writable(8.5)
-export const artY = writable(11.0)
-export const frameWidth = writable(1.5)
+/**
+ * Horizontal dimension of the matted art and glass.
+ */
+export const artX = writable(8 + 1 / 2)
+/**
+ * Vertical dimension of the matted art and glass.
+ */
+export const artY = writable(11)
+/**
+ * Gap between art and frame to allow for expansion/contraction
+ * of the frame.
+ *
+ * Ideally this would be derived from the longitudinal shrinkage
+ * factor of the material and the dimensions of the frame, but
+ * that would only matter for *very* large frames.
+ */
+export const artPadding = readable(1 / 16)
+
+/**
+ * Width of the frame material.
+ */
+export const frameWidth = writable(1 + 1 / 2)
+
+/**
+ * Size of the rabbet on the interior of the frame.
+ */
 export const rabbetWidth = writable(1 / 4)
+export const rabbetWidthMax = readable(1 / 2)
+export const rabbetWidthMin = readable(1 / 8)
+
+/**
+ * Kerf of the saw blade used to make cuts.
+ */
 export const kerfWidth = writable(1 / 16)
 
 /*
@@ -18,18 +47,24 @@ export const kerfWidth = writable(1 / 16)
 
 /* Width of the constructed frame. */
 export const frameX = derived(
-    [artX, frameWidth, rabbetWidth],
-    ([$artX, $frameWidth, $rabbetWidth]) => {
-        return $artX - $rabbetWidth * 2 + $frameWidth * 2
+    [artX, artPadding, frameWidth, rabbetWidth],
+    ([$artX, $artPadding, $frameWidth, $rabbetWidth]) => {
+        return $artX + $artPadding - $rabbetWidth * 2 + $frameWidth * 2
     }
 )
 
 /* Height of the constructed frame. */
 export const frameY = derived(
-    [artY, frameWidth, rabbetWidth],
-    ([$artY, $frameWidth, $rabbetWidth]) => {
-        return $artY - $rabbetWidth * 2 + $frameWidth * 2
+    [artY, artPadding, frameWidth, rabbetWidth],
+    ([$artY, $artPadding, $frameWidth, $rabbetWidth]) => {
+        return $artY + $artPadding - $rabbetWidth * 2 + $frameWidth * 2
     }
+)
+
+export const frameWidthMax = readable(4.0)
+export const frameWidthMin = derived(
+    [rabbetWidth],
+    ([$rabbetWidth]) => $rabbetWidth + 1 / 4
 )
 
 /**
