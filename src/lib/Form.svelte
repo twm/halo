@@ -3,8 +3,12 @@
         artX,
         artY,
         frameWidth,
+        frameWidthMax,
+        frameWidthMin,
         stockLength,
         rabbetWidth,
+        rabbetWidthMax,
+        rabbetWidthMin,
         material,
         MATERIALS,
     } from "$lib/stores"
@@ -28,7 +32,8 @@
         <input
             type="number"
             bind:value={$frameWidth}
-            min="0.25"
+            max={$frameWidthMax}
+            min={$frameWidthMin}
             step="0.125"
             required
         />
@@ -38,9 +43,9 @@
         <input
             type="number"
             bind:value={$rabbetWidth}
-            min="0.125"
+            max={$rabbetWidthMax}
+            min={$rabbetWidthMin}
             step="0.125"
-            max={$frameWidth - 1 / 4}
         />
     </label>
 
