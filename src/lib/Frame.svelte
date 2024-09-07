@@ -2,6 +2,7 @@
     import {
         artX,
         artY,
+        artPadding,
         frameX,
         frameY,
         frameWidth,
@@ -26,8 +27,8 @@
 <svg viewBox={`0 0 ${$frameX} ${$frameY}`} width={$frameX} height={$frameY}>
     <!-- the art -->
     <rect
-        x={$frameWidth - $rabbetWidth}
-        y={$frameWidth - $rabbetWidth}
+        x={$frameWidth - $rabbetWidth + $artPadding / 2}
+        y={$frameWidth - $rabbetWidth + $artPadding / 2}
         width={$artX}
         height={$artY}
         fill="#eee"
