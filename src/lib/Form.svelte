@@ -13,75 +13,68 @@
         MATERIALS,
     } from "$lib/stores"
     import { frac } from "$lib/frac"
+    import FracInput from "$lib/FracInput.svelte"
+    import FracRange from "$lib/FracRange.svelte"
 </script>
 
 <h2>Inputs</h2>
 
 <form action="#" method="GET">
-    <label>
-        Art width
-        <input type="number" bind:value={$artX} min="1" step="0.25" required />
-    </label>
-    <label>
-        Art height
-        <input type="number" bind:value={$artY} min="1" step="0.25" required />
-    </label>
+    <label for="art-width"> Art width </label>
+    <FracInput id="art-width" bind:value={$artX} min={1} required />
+    <label for="art-height"> Art height </label>
+    <FracInput id="art-height" bind:value={$artY} min={1} required />
 
-    <label>
-        Frame width
-        <input
-            type="number"
-            bind:value={$frameWidth}
-            max={$frameWidthMax}
-            min={$frameWidthMin}
-            step="0.125"
-            required
-        />
-    </label>
-    <label>
-        Rabbet width
-        <input
-            type="number"
-            bind:value={$rabbetWidth}
-            max={$rabbetWidthMax}
-            min={$rabbetWidthMin}
-            step="0.125"
-        />
-    </label>
+    <label for="frame-width"> Frame width </label>
 
-    <label>
-        Material
-        <select bind:value={$material}>
-            {#each MATERIALS as material}
-                <option value={material}>{material.name}</option>
-            {/each}
-        </select>
-    </label>
+    <FracRange
+        id="frame-width"
+        bind:value={$frameWidth}
+        max={$frameWidthMax}
+        min={$frameWidthMin}
+        step={0.125}
+        required
+    />
+    <label for="rabbet-width"> Rabbet width </label>
+    <FracRange
+        id="rabbet-width"
+        bind:value={$rabbetWidth}
+        max={$rabbetWidthMax}
+        min={$rabbetWidthMin}
+        step={0.125}
+        required
+    />
+
+    <label for="material"> Material </label>
+    <select id="material" bind:value={$material}>
+        {#each MATERIALS as material}
+            <option value={material}>{material.name}</option>
+        {/each}
+    </select>
 </form>
 
 <h2>Outputs</h2>
 
 <div class="outputs">
-    <p class="label">Linear stock <span>{frac($stockLength)}"</span></p>
+    <label for="linear-stock">Linear stock </label>
+    <output id="linear-stock">{frac($stockLength)}"</output>
 </div>
 
 <style>
     form,
     .outputs {
         display: grid;
-        grid-template-columns: 1fr 8rem;
+        grid-template-columns: 1fr 12rem;
         gap: 0.5rem;
     }
-    label,
-    .label {
-        display: contents;
-    }
 
-    input,
     select {
+        box-sizing: border-box;
+        width: 100%;
         background: inherit;
         color: inherit;
-        border: 1px solid currentColor;
+        border: none;
+        border-bottom: 1px solid currentColor;
         padding: 1px 4px;
         line-height: 1;
     }
