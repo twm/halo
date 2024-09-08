@@ -44,7 +44,7 @@ export function frac(n: number): string {
 export function parseFrac(s: string): number {
     const matches = [
         ...s.matchAll(
-            /((?:[+-]\s*)?)(\.\d+|\d+(?:\.\d*)?)(?:[\/\u2044](\d+))?(\s+|$|(?=[.+-]))/dg
+            /((?:[+-]\s*)?)(\.\d+|\d+(?:\.\d*)?)(?:[/\u2044](\d+))?(\s+|$|(?=[+-]))/dg
         ),
     ]
     if (matches.length === 0 || matches[0].index !== 0) {
@@ -73,7 +73,7 @@ export function parseFrac(s: string): number {
         }
     }
 
-    const [lastStart, _] = matches[matches.length - 1].indices![4]
+    const [lastStart] = matches[matches.length - 1].indices![4]
     if (lastStart !== s.length) {
         // Failure to match, or trailing whitespace or other gunk.
         return NaN
