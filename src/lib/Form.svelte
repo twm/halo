@@ -65,7 +65,9 @@
     .outputs {
         display: grid;
         grid-template-columns: 1fr 12rem;
+        grid-auto-rows: minmax(2rem, auto);
         gap: 0.5rem;
+        align-items: baseline;
     }
 
     select {
@@ -74,8 +76,8 @@
         background: inherit;
         color: inherit;
         border: none;
-        border-bottom: 1px solid currentColor;
-        padding: 1px 4px;
+        border-bottom: 2px solid var(--rule-color);
+        padding: 0 2px;
         line-height: 1;
     }
 </style>

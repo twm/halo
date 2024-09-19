@@ -75,11 +75,11 @@
         background: inherit;
         color: inherit;
         border: none;
-        border-bottom: 1px solid currentColor;
-        padding: 0;
+        border-bottom: 2px solid var(--rule-color);
+        padding: 0 2px;
         line-height: 1;
     }
-    :invalid {
-        border-bottom-color: red;
+    input:invalid {
+        border-bottom-color: var(--invalid-color);
     }
 </style>
