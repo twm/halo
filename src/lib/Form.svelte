@@ -56,7 +56,7 @@
 
 <div class="outputs">
     <label for="linear-stock">Linear stock </label>
-    <output id="linear-stock">{frac($stockLength)}"</output>
+    <output id="linear-stock">{frac($stockLength)}</output>
 </div>
 
 <style>
