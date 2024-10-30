@@ -27,12 +27,13 @@
     export let value: number
     export let min: number | null = null
     export let max: number | null = null
+    export let step: number | null = null // TODO: Add step buttons
     export let required: boolean = false
 
     let focused: boolean = false
     let input: HTMLInputElement
     let rawValue = frac(value)
-    let displayValue = frac(value) + '"'
+    let displayValue = frac(value)
 
     $: {
         // Round to the nearest 1⁄32nd to match the masked value.
@@ -66,9 +67,29 @@
             focused = false
         }}
     />
+    {#if step !== null}
+        <button
+            disabled={min == null || value - step < min}
+            on:click={() => {
+                value -= step;
+                rawValue = frac(value);
+            }}
+        >-{frac(step)}</button>
+        <button
+            disabled={max == null || value + step > max}
+            on:click={() => {
+                value += step;
+                rawValue = frac(value);
+            }}
+        >+{frac(step)}</button>
+    {/if}
 </span>
 
 <style>
+    .range {
+        display: flex;
+        gap: 0.2rem;
+    }
     input {
         box-sizing: border-box;
         width: 100%;
@@ -81,5 +102,25 @@
     }
     :invalid {
         border-bottom-color: red;
+    }
+
+    button {
+        box-sizing: border-box;
+        padding: 0 0.2rem;
+        line-height: 1;
+        border: 1px outset black; /* so pretty ✨ */
+        border-radius: 3px;
+        background: white;
+    }
+    button:active {
+        border-style: inset;  /* even prettier ✨ */
+    }
+    button:disabled {
+        opacity: 0.5;
+    }
+    @media print {
+        button {
+            display: none;
+        }
     }
 </style>
