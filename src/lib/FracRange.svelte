@@ -20,6 +20,10 @@
         grid-template-columns: 3rem 1fr;
     }
 
+    output {
+        padding: 0 2px;
+    }
+
     input {
         width: 100%;
         box-sizing: border-box;
