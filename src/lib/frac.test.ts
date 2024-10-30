@@ -57,6 +57,11 @@ describe("parseFrac converts strings to numbers", () => {
         [" 123", NaN],
         ["123 ", NaN],
         ["1/2.3", NaN],
+        // " is accepted following the number
+        ['8"', 8],
+        ['8" 1/2"', 8.5],
+        ['6" + 1/2" - 0.25 + 1/2"', 6.75],
+        ['1"/2', NaN],
     ]
     test.for(cases)("parses %j as %d", ([s, n]) => {
         expect(parseFrac(s)).toEqual(n)
