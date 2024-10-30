@@ -57,11 +57,20 @@ describe("parseFrac converts strings to numbers", () => {
         [" 123", NaN],
         ["123 ", NaN],
         ["1/2.3", NaN],
-        // " is accepted following the number
+        // " is allowed following the number
         ['8"', 8],
         ['8" 1/2"', 8.5],
         ['6" + 1/2" - 0.25 + 1/2"', 6.75],
         ['1"/2', NaN],
+        // ' following the number multiplies by 12 (feet to inches)
+        ["1'", 12],
+        ["1'2", 14], // No whitespace necessary
+        ["1' 2", 14],
+        ["1' 2\"", 14],
+        ["1' + 2", 14],
+        ["1'+2\"", 14],
+        ["1/2' +12\"", 18],
+        ["3'4'5'6'1/2'", (3 + 4 + 5 + 6 + 0.5) * 12]
     ]
     test.for(cases)("parses %j as %d", ([s, n]) => {
         expect(parseFrac(s)).toEqual(n)
