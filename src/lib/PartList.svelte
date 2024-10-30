@@ -64,12 +64,18 @@
         width: 100%;
         height: auto;
     }
-    th {
-        text-align: left;
-        border-bottom: 1px solid gray;
+    table {
+        border-spacing: 0;
     }
     th,
     td {
-        padding-right: 0.5em;
+        text-align: left;
+        vertical-align: baseline;
+        padding: 0.25rem 0.5em 0.25rem 0;
+    }
+    thead th {
+        font-weight: normal;
+        padding-right: 1rem;
+        border-bottom: 2px solid var(--rule-color);
     }
 </style>
