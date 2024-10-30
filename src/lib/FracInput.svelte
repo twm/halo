@@ -71,17 +71,17 @@
         <button
             disabled={min == null || value - step < min}
             on:click={() => {
-                value -= step;
-                rawValue = frac(value);
-            }}
-        >-{frac(step)}</button>
+                value -= step
+                rawValue = frac(value)
+            }}>-{frac(step)}</button
+        >
         <button
             disabled={max == null || value + step > max}
             on:click={() => {
-                value += step;
-                rawValue = frac(value);
-            }}
-        >+{frac(step)}</button>
+                value += step
+                rawValue = frac(value)
+            }}>+{frac(step)}</button
+        >
     {/if}
 </span>
 
@@ -113,7 +113,7 @@
         background: white;
     }
     button:active {
-        border-style: inset;  /* even prettier ✨ */
+        border-style: inset; /* even prettier ✨ */
     }
     button:disabled {
         opacity: 0.5;
