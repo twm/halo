@@ -41,7 +41,7 @@
         if (input) {
             if (validate(input, v, min, max)) {
                 value = v
-                displayValue = frac(v) + '"'
+                displayValue = frac(v)
             } else {
                 displayValue = rawValue
             }

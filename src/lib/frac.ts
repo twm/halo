@@ -1,5 +1,5 @@
 /**
- * Present a number as a mixed fraction.
+ * Present a number as a mixed fraction, in inches.
  *
  * The value is rounded to the nearest 1⁄32nd, and the
  * denominator is one of 32, 16, 8, or 4, as on a measuring tape.
@@ -35,7 +35,7 @@ export function frac(n: number): string {
         s += `${num}\u2044${denom}`
     }
 
-    return s
+    return s + '"'
 }
 
 /**
