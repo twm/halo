@@ -44,7 +44,7 @@
     }: Props = $props()
 
     let focused: boolean = $state(false)
-    let input: HTMLInputElement = $state()
+    let input: HTMLInputElement | undefined = $state()
     let rawValue = $state(frac(value))
     let displayValue = $state(frac(value))
 
