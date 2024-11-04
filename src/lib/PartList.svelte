@@ -14,11 +14,11 @@
     }
 
     let gap = 0.5
-    $: totalWidth = $parts.reduce((max, part) => Math.max(max, part.length), 0)
-    $: totalHeight = $parts.reduce(
+    let totalWidth = $derived($parts.reduce((max, part) => Math.max(max, part.length), 0))
+    let totalHeight = $derived($parts.reduce(
         (total, part) => total + (part.width + gap) * part.count,
         -gap
-    )
+    ))
 </script>
 
 <h2>Part List</h2>

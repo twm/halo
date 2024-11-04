@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { run } from 'svelte/legacy';
+
     import { frac, parseFrac } from "$lib/frac"
 
     function validate(
@@ -23,19 +25,30 @@
         return true
     }
 
-    export let id: string
-    export let value: number
-    export let min: number | null = null
-    export let max: number | null = null
-    export let step: number | null = null // TODO: Add step buttons
-    export let required: boolean = false
+    interface Props {
+        id: string;
+        value: number;
+        min?: number | null;
+        max?: number | null;
+        step?: number | null;
+        required?: boolean;
+    }
 
-    let focused: boolean = false
-    let input: HTMLInputElement
-    let rawValue = frac(value)
-    let displayValue = frac(value)
+    let {
+        id,
+        value = $bindable(),
+        min = null,
+        max = null,
+        step = null,
+        required = false
+    }: Props = $props();
 
-    $: {
+    let focused: boolean = $state(false)
+    let input: HTMLInputElement = $state()
+    let rawValue = $state(frac(value))
+    let displayValue = $state(frac(value))
+
+    run(() => {
         // Round to the nearest 1⁄32nd to match the masked value.
         let v = Math.round(parseFrac(rawValue) * 32) / 32
 
@@ -47,7 +60,7 @@
                 displayValue = rawValue
             }
         }
-    }
+    });
 </script>
 
 <span class="range">
@@ -57,27 +70,27 @@
         value={focused ? rawValue : displayValue}
         bind:this={input}
         {required}
-        on:input={() => {
+        oninput={() => {
             rawValue = input.value
         }}
-        on:focus={() => {
+        onfocus={() => {
             focused = true
         }}
-        on:blur={() => {
+        onblur={() => {
             focused = false
         }}
     />
     {#if step !== null}
         <button
             disabled={min == null || value - step < min}
-            on:click={() => {
+            onclick={() => {
                 value -= step
                 rawValue = frac(value)
             }}>-{frac(step)}</button
         >
         <button
             disabled={max == null || value + step > max}
-            on:click={() => {
+            onclick={() => {
                 value += step
                 rawValue = frac(value)
             }}>+{frac(step)}</button
