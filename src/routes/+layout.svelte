@@ -2,10 +2,10 @@
     import normalizeCss from "$lib/vendor/normalize.css/normalize-8.0.1.css?url"
     import stylesCss from "$lib/styles.css?url"
     interface Props {
-        children?: import('svelte').Snippet;
+        children?: import("svelte").Snippet
     }
 
-    let { children }: Props = $props();
+    let { children }: Props = $props()
 </script>
 
 <svelte:head>

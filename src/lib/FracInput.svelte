@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { run } from 'svelte/legacy';
+    import { run } from "svelte/legacy"
 
     import { frac, parseFrac } from "$lib/frac"
 
@@ -26,12 +26,12 @@
     }
 
     interface Props {
-        id: string;
-        value: number;
-        min?: number | null;
-        max?: number | null;
-        step?: number | null;
-        required?: boolean;
+        id: string
+        value: number
+        min?: number | null
+        max?: number | null
+        step?: number | null
+        required?: boolean
     }
 
     let {
@@ -40,8 +40,8 @@
         min = null,
         max = null,
         step = null,
-        required = false
-    }: Props = $props();
+        required = false,
+    }: Props = $props()
 
     let focused: boolean = $state(false)
     let input: HTMLInputElement = $state()
@@ -60,7 +60,7 @@
                 displayValue = rawValue
             }
         }
-    });
+    })
 </script>
 
 <span class="range">
