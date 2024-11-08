@@ -70,8 +70,8 @@
         value={focused ? rawValue : displayValue}
         bind:this={input}
         {required}
-        oninput={() => {
-            rawValue = input.value
+        oninput={(e) => {
+            rawValue = e.currentTarget.value
         }}
         onfocus={() => {
             focused = true
