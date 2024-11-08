@@ -1,9 +1,17 @@
+<script lang="ts">
+    interface Props {
+        children?: import("svelte").Snippet
+    }
+
+    let { children }: Props = $props()
+</script>
+
 <div class="wrapper">
     <header>
         <h1>Picture Frame Cutlist Calculator</h1>
     </header>
 
-    <slot></slot>
+    {@render children?.()}
 
     <footer>
         <p>
@@ -26,7 +34,7 @@
         text-align: center;
     }
 
-    footer :is(:link, :visited) {
+    footer :is(:global(:link, :visited)) {
         color: inherit;
     }
 </style>

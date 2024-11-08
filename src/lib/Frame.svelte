@@ -25,8 +25,8 @@
     // The art is drawn centered in a field large enough to hold the largest
     // possible frame so that it doesn't shift around or resize as the user
     // plays with the frame width.
-    $: maxWidth = $artX + 2 * $frameWidthMax
-    $: maxHeight = $artY + 2 * $frameWidthMax
+    let maxWidth = $derived($artX + 2 * $frameWidthMax)
+    let maxHeight = $derived($artY + 2 * $frameWidthMax)
 </script>
 
 <svg
