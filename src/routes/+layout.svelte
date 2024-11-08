@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import normalizeCss from "$lib/vendor/normalize.css/normalize-8.0.1.css?url"
     import stylesCss from "$lib/styles.css?url"
     interface Props {
