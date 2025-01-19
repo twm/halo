@@ -15,7 +15,12 @@ const config = {
             precompress: false,
             strict: true,
         }),
+        paths: {
+            base: "/halo",
+        },
     },
+
+    bundleStrategy: "inline",
 }
 
 export default config
