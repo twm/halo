@@ -16,7 +16,7 @@
     <footer>
         <p>
             <!-- TODO a href="/about">About</a> ☙ -->
-            © 2024 Tom Most ❧
+            © 2024–2025 Tom Most ❧
             <a href="https://github.com/twm/halo/issues">Report an issue</a>
         </p>
     </footer>

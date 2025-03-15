@@ -13,12 +13,15 @@
         MATERIALS,
     } from "$lib/stores"
     import { frac } from "$lib/frac"
+    import Input from "$lib/Input.svelte"
     import FracInput from "$lib/FracInput.svelte"
 </script>
 
 <h2>Inputs</h2>
 
 <form action="#" method="GET">
+    <label for="art-title">Title</label>
+    <Input type="text" id="art-title" />
     <label for="art-width"> Art width </label>
     <FracInput id="art-width" bind:value={$artX} min={1} required />
     <label for="art-height"> Art height </label>

@@ -2,13 +2,9 @@
     import { run } from "svelte/legacy"
 
     import { frac, parseFrac } from "$lib/frac"
+    import Input from "$lib/Input.svelte"
 
-    function validate(
-        input: HTMLInputElement,
-        v: number,
-        min: number | null,
-        max: number | null
-    ) {
+    function validate(input: Input, v: number, min: number | null, max: number | null) {
         if (isNaN(v)) {
             input.setCustomValidity("Enter a mixed fraction or decimal number")
             return false
@@ -44,7 +40,7 @@
     }: Props = $props()
 
     let focused: boolean = $state(false)
-    let input: HTMLInputElement | undefined = $state()
+    let input: Input | undefined = $state()
     let rawValue = $state(frac(value))
     let displayValue = $state(frac(value))
 
@@ -64,7 +60,7 @@
 </script>
 
 <span class="range">
-    <input
+    <Input
         type="text"
         {id}
         value={focused ? rawValue : displayValue}
@@ -102,19 +98,6 @@
     .range {
         display: flex;
         gap: 0.2rem;
-    }
-    input {
-        box-sizing: border-box;
-        width: 100%;
-        background: inherit;
-        color: inherit;
-        border: none;
-        border-bottom: 2px solid var(--rule-color);
-        padding: 0 2px;
-        line-height: 1;
-    }
-    input:invalid {
-        border-bottom-color: var(--invalid-color);
     }
 
     button {
