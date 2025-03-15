@@ -1,5 +1,11 @@
 <script lang="ts">
-    let props = $props()
+    import type { HTMLInputAttributes } from "svelte/elements"
+    let props: HTMLInputAttributes = $props()
+
+    let input: HTMLInputElement | undefined = $state()
+    export function setCustomValidity(s: string): void {
+        if (input) input.setCustomValidity(s)
+    }
 </script>
 
 <input {...props} />

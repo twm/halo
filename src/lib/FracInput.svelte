@@ -4,12 +4,7 @@
     import { frac, parseFrac } from "$lib/frac"
     import Input from "$lib/Input.svelte"
 
-    function validate(
-        input: HTMLInputElement,
-        v: number,
-        min: number | null,
-        max: number | null
-    ) {
+    function validate(input: Input, v: number, min: number | null, max: number | null) {
         if (isNaN(v)) {
             input.setCustomValidity("Enter a mixed fraction or decimal number")
             return false
@@ -45,7 +40,7 @@
     }: Props = $props()
 
     let focused: boolean = $state(false)
-    let input: HTMLInputElement | undefined = $state()
+    let input: Input | undefined = $state()
     let rawValue = $state(frac(value))
     let displayValue = $state(frac(value))
 
